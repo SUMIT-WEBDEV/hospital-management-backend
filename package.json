@@ -1,0 +1,49 @@
+{
+  "name": "health-app-backend",
+  "version": "1.0.0",
+  "description": "backend of health app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": "18.x" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saisashreek1992/health-app-backend.git"
+  },
+  "author": "nabeel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saisashreek1992/health-app-backend/issues"
+  },
+  "homepage": "https://github.com/saisashreek1992/health-app-backend#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "aws-sdk": "^2.1372.0",
+    "axios": "^1.2.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^10.1.0",
+    "firebase-admin": "^11.10.1",
+    "googleapis": "^110.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mailgun-js": "^0.6.7",
+    "mongoose": "^6.7.1",
+    "multer": "^1.4.5-lts.1",
+    "netlify-cli": "^15.10.0",
+    "netlify-lambda": "^2.0.16",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "serverless-http": "^3.2.0",
+    "swagger-ui-express": "^4.6.0",
+    "twilio": "^4.11.1",
+    "uuid": "^9.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+
+
+[build]
+  functions = "netlify-functions"
+
+
+
+[dev]
+  publish = "dist"
+

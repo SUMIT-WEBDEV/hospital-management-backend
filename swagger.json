@@ -1,0 +1,388 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Doctor App backend",
+		"description": "Doctor App backend API",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"host": "localhost:5000",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "Users",
+			"description": "API for users in the system"
+		}
+	],
+	"schemes": ["http"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+
+	"paths": {
+		"/api/v1/doctors/add-patient": {
+			"post": {
+				"tags": ["Doctor"],
+				"summary": "Add a new patient",
+				"parameters": [
+					{
+						"name": "patient",
+						"in": "body",
+						"description": "Patient is to be added",
+						"schema": {
+							"$ref": "#/definitions/Patient"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "Patient added successfully"
+					}
+				}
+			}
+		},
+		"/api/v1/doctors/get-all-patients": {
+			"get": {
+				"tags": ["Doctor"],
+				"summary": "Get all patients added by the doctor",
+				"responses": {
+					"200": {
+						"description": "Patients fetched successfuly",
+						"schema": {
+							"$ref": "#/definitions/Patient"
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/doctors/patient/:patientId": {
+			"get": {
+				"tags": ["Doctor"],
+				"summary": "Get a patient",
+				"parameters": [
+					{
+						"name": "patientId",
+						"in": "path",
+						"description": "unique id of the patient"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Patient fetched successfully",
+						"schema": {
+							"$ref": "#/definitions/Patient"
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/doctors/patient/:patientId": {
+			"put": {
+				"tags": ["Doctor"],
+				"summary": "Update a patient",
+				"parameters": [
+					{
+						"name": "patientId",
+						"in": "path",
+						"description": "patient to be updated"
+					},
+					{
+						"name": "patient",
+						"in": "body",
+						"description": "Patient to be updated",
+						"schema": {
+							"$ref": "#/definitions/Patient"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Patient updated successfully"
+					}
+				}
+			}
+		},
+		"/api/v1/doctors/add-diet-chart": {
+			"post": {
+				"tags": ["Doctor"],
+				"summary": "Add a new diet chart",
+				"parameters": [
+					{
+						"name": "dietChart",
+						"in": "body",
+						"description": "Diet chart to be addedd",
+						"schema": {
+							"$ref": "#/definitions/dietChart"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "Diet chart added successfully"
+					}
+				}
+			}
+		},
+		"/api/v1/doctors/add-form": {
+			"post": {
+				"tags": ["Doctor"],
+				"summary": "Add a new form",
+				"parameters": [
+					{
+						"name": "form",
+						"in": "body",
+						"description": "Form chart to be addedd",
+						"schema": {
+							"$ref": "#/definitions/Form"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "Form added successfully"
+					}
+				}
+			}
+		}
+	},
+
+	"definitions": {
+		"Patient": {
+			"type": "object",
+			"properties": {
+				"doctorId": {
+					"type": "String",
+					"example": "6871298378217382112",
+					"description": "To make a reference to which doctor is adding the patient"
+				},
+				"patientId": {
+					"type": "String",
+					"example": "DA-23",
+					"description": "Unique id for every patient"
+				},
+				"logo": {
+					"type": "String",
+					"example": "link",
+					"description": "public url of where the logo is stored"
+				},
+				"phone": {
+					"type": "Number",
+					"example": "8983937433",
+					"description": "Phone number of the patient",
+					"unique": "true"
+				},
+				"name": {
+					"type": "String",
+					"example": "John",
+					"description": "Patient name"
+				},
+				"email": {
+					"type": "String,",
+					"example": "example@gmail.com",
+					"description": "Patient mail id"
+				},
+				"dob": {
+					"type": "Date",
+					"example": "10-10-2010",
+					"description": "Patient DOB"
+				},
+				"gender": {
+					"type": "String",
+					"example": "Female",
+					"description": "Patient gender"
+				},
+				"height": {
+					"type": "Number",
+					"example": "160",
+					"description": "Patient height in cm"
+				},
+				"weight": {
+					"type": "Number",
+					"example": "160",
+					"description": "Patient height in cm"
+				},
+				"caretakers_name": {
+					"type": "String",
+					"example": "Jona",
+					"description": "Patient's caretakers name"
+				},
+				"caretakers_relation": {
+					"type": "String",
+					"example": "Wife",
+					"description": "Patient's and caretaker's relation"
+				},
+				"caretakers_phone": {
+					"type": "Number",
+					"example": "8792497834",
+					"description": "Patient's caretakers phone number"
+				},
+				"caretakers_time": {
+					"type": "String",
+					"example": "9:30",
+					"description": "Available time of caretaker"
+				},
+				"health_plan": {
+					"type": "String",
+					"example": "Cardiac Plan",
+					"description": "Health plan"
+				},
+				"health_plan_date": {
+					"type": "Date",
+					"example": "10-10-2020",
+					"description": "Health program date"
+				},
+				"team": {
+					"type": "String",
+					"example": "Team A",
+					"description": "Team name"
+				},
+				"amount": {
+					"type": "Number",
+					"example": "1500",
+					"description": "Amount to pay"
+				},
+				"payment_mode": {
+					"type": "String",
+					"example": "UPI",
+					"description": "Payment mode"
+				},
+				"payment_date": {
+					"type": "Date",
+					"example": "20-10-2020",
+					"description": "Expected date of paying"
+				},
+				"ref_id": {
+					"type": "String",
+					"example": "7387bhb32",
+					"description": "Payment reference Id"
+				},
+				"next_payment_date": {
+					"type":" Date",
+					"example": "10-10-2010",
+					"description": "Next payment date"
+				}
+			},
+			"required": ["*"]
+		},
+		"dietChart": {
+			"type": "object",
+			"properties": {
+				"doctorId": {
+					"type": "String",
+					"example": "6871298378217382112",
+					"description": "To make a reference to which doctor is adding the diet chart"
+				},
+				"calorie_lower": {
+					"type": "Number",
+					"example": "300",
+					"description": "Calorie lower"
+				},
+				"calorie_upper": {
+					"type": "Number",
+					"example": "600",
+					"description": "Calorie upper"
+				},
+				"ch_lower": {
+					"type": "Number",
+					"example": "250",
+					"description": "Carbohydrate lower"
+				},
+				"ch_upper": {
+					"type": "Number",
+					"example": "900",
+					"description": "Carbohydrate high"
+				},
+				"protiens": {
+					"type": "String",
+					"example": "Amino acids",
+					"description": "protiens"
+				},
+				"fats": {
+					"type": "String",
+					"example": "fats",
+					"description": "fat"
+				},
+				"food_type": {
+					"type": "String",
+					"example": "Non veg",
+					"description": "food type"
+				},
+				"cuisine_type": {
+					"type": "String",
+					"example": "cuisine type",
+					"description": "cuisine type"
+				},
+				"file": {
+					"type": "String",
+					"example": "docment",
+					"description": "url of the document"
+				}
+			},
+			"required": ["*"]
+		},
+		"Form": {
+			"type": "object",
+			"properties": {
+				"doctorId": {
+					"type": "String",
+					"example": "6871298378217382112",
+					"description": "To make a reference to which doctor is adding the diet chart"
+				},
+				"patientId": {
+					"type": "String",
+					"example": "DA-23",
+					"description": "Reference to a patient, which th form is assigning"
+				},
+				"question_title": {
+					"type": "String",
+					"example": "Survey",
+					"description": "a question title"
+				},
+				"questions": {
+					"type": "arrray",
+					"items": {
+						"type": "object",
+						"properties": {
+							"type": {
+								"type": "String",
+								"example": "radio",
+								"description": "Type of the question"
+							},
+							"question": {
+								"type": "String",
+								"example": "When you take medicine",
+								"description": "question"
+							},
+							"choise1": {
+								"type": "String",
+								"example": "Morning",
+								"description": "options"
+							},
+							"choise2": {
+								"type": "String",
+								"example": "Noon",
+								"description": "options"
+							},
+							"choise3": {
+								"type": "String",
+								"example": "Evening",
+								"description": "options"
+							},
+							"choise4": {
+								"type": "String",
+								"example": "Night",
+								"description": "options"
+							}
+						}
+					}
+				}
+			},
+			"required": ["*"]
+		}
+	}
+}
